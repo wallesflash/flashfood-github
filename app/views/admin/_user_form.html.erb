@@ -1,0 +1,28 @@
+
+<table class="table table-striped">
+  <tr >
+    <th><%= t.label(:name) %></th>
+    <td><%= t.text_field(:name, :class => "form-control", placeholder: "Wpisz swoje imię") %></td>
+  </tr>
+  <tr >
+    <th><%= t.label(:surename) %></th>
+    <td><%= t.text_field(:surename, :class => "form-control", placeholder: "Wpisz swoje nazwisko") %></td>
+  </tr>
+  <tr >
+    <th><%= t.label(:admin_nick) %></th>
+    <td><%= t.text_field(:admin_nick, :class => "form-control", placeholder: "Wpisz swój nick") %></td>
+  </tr>
+  <tr >
+    <th><%= t.label(:email) %></th>
+    <td><%= t.text_field(:email, :class => "form-control", placeholder: "Wpisz swój adres email") %></td>
+  </tr>
+  <tr >
+    <th><%= t.label(:password) %></th>
+    <td><%= t.password_field(:password, :class => "form-control", placeholder: "Wpisz hasło") %></td>
+  </tr>
+  <tr >
+    <th><%= t.label(:password_confirmation, "Confirm your password") %></th>
+    <td><%= t.password_field(:password_confirmation, :class => "form-control", placeholder: "Powtórz wpisane hasło") %></td>
+  </tr>
+
+</table>

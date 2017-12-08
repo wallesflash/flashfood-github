@@ -1,2 +1,14 @@
-<h1>Admin#delete</h1>
-<p>Find me in app/views/admin/delete.html.erb</p>
+<div class="hero-unit">
+
+<h1>Usuwanie administratora</h1>
+
+<%= form_for(:admin_del, :url=>{:action => "remove", :id => @admin_del.id}) do |field| %>
+
+  <p style="color: white; font-weight: bold; font-size: 16px;">Czy napewno chcesz usunąc użytkownika: "<%= @admin_del.admin_nick  %>"??</p>
+
+  <div style="text-align: center;">
+    <%= link_to("Wróć", {:action=>"index"}, :class => "btn btn-info") %>
+    <%= submit_tag("Usuń użytkownika", :class => "btn btn-danger") %>
+  </div>
+<%end%>
+</div>

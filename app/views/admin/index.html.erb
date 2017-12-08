@@ -1,15 +1,26 @@
-<div class="container-fluid">
-  <div class="col-md-2">
-    Nawigacja
+
+  <div class="col-md-2 box h100">
+    <h1 class="display-table text-center">Nawigacja</h1>
+    <ul>
+      <li>jeden</li>
+      <li>dwa</li>
+      <li>trzy</li>
+    </ul>
+    <ul>
+      <li>jeden</li>
+      <li>dwa</li>
+      <li>trzy</li>
+    </ul>
+
   </div>
-  <div class="col-md-10 box display-table-cell valign-top">
+  <div class="col-md-10 box h100">
     <div class="row">
-      <header class="nav-header" clearfix="true">
+      <header>
         <div class="col-md-5">
           <p><%= "Witaj w panelu administratora".upcase %></p>
         </div>
         <div class="col-md-7">
-          <ul class="pull-right">
+          <ul class="pull-right list-inline">
             <li>
               <a href="#">
                 <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
@@ -32,5 +43,38 @@
         </div>
       </header>
     </div>
+
+    <%= link_to("Dodaj administratora strony", {:action => "new"}, :class => "btn btn-mini btn-primary")%>
+    <p style="text-align: right">
+      Nb. of users: <%= @admin_user.size %>
+    </p>
+
+
+      <table class="table border-dark" id="admin-table-style">
+        <tr>
+          <th colspan="6" class="text-center">Administratorzy</th>
+        </tr>
+        <tr>
+          <th class="text-center">#</th>
+          <th class="text-center">Imię</th>
+          <th class="text-center">Nazwisko</th>
+          <th class="text-center">Nick</th>
+          <th class="text-center">Email</th>
+          <th class="text-center">Akcja</th>
+        </tr>
+        <% @admin_user.each do |au| %>
+          <tr class="text-center">
+            <td><%= au.id %></td>
+            <td><%= au.name %></td>
+            <td><%= au.surename %></td>
+            <td><%= au.admin_nick %></td>
+            <td><%= au.email %></td>
+            <td>
+              <%= link_to("Edycja", {:action => "edit", :id => au.id}, :class => "btn btn-xs btn-primary") %>
+              <%= link_to("Usuń", {:action => "delete", :id => au.id}, :class => "btn btn-xs btn-danger") %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+
   </div>
-</div>
