@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flashfood</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'jquery', 'admin', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+  <body>
+    <div class="container h100">
+      <div class="col-md-3 box h100">
+
+        <h2 class="text-center">Nawigacja</h2>
+        <ul>
+          <li><%= link_to("Administratorzy", {:action => "index", :controller => "admin"}, class: "link-decor-off") %></li>
+          <li><%= link_to("Klienci", {:action => "index", :controller => "customer"}, class: "link-decor-off") %></li>
+          <li>trzy</li>
+        </ul>
+        <ul>
+          <li>jeden</li>
+          <li>dwa</li>
+          <li>trzy</li>
+        </ul>
+
+      </div>
+      <div class="col-md-9 box h100">
+          <% if !flash[:notice].blank? %>
+            <div class="alert alert-success" style="text-align: center; margin-top: 15px;">
+              <%= flash[:notice] %>
+            </div>
+          <%end%>
+        <%= yield %>
+      </div>
+    </div>
+
+  </body>
+</html>

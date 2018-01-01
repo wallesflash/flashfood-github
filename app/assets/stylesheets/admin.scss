@@ -20,6 +20,14 @@ html, body{
 
 .h100{
   height: 100%;
+  // display: inline-block;
+}
+.row{
+  padding: 15px;
+}
+
+.table-cell{
+  display: table-cell;
 }
 
 .glyphicon, .fa{
@@ -33,7 +41,7 @@ html, body{
 
 .link-decor-off, .link-decor-off:hover{
   text-decoration: none;
-  color: inherit;
+  color: black;
 }
 
 .admin-table{
@@ -44,6 +52,8 @@ html, body{
   border: 1px solid black;
 }
 
+
+
 #admin-table-style tr:nth-child(even){
   background-color: #e6e6e6;
 }
@@ -53,7 +63,7 @@ html, body{
 
 #admin-table-style tr:hover{
   background-color: #d79708;
-  transition-delay: 0.1s;
+  transition: background-color 0.3s ease-in-out;
 }
 
 #admin-table-style th {

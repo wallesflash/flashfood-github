@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171124103657) do
+ActiveRecord::Schema.define(version: 20171208203735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,16 +40,16 @@ ActiveRecord::Schema.define(version: 20171124103657) do
     t.index ["client_surename"], name: "index_bookings_on_client_surename"
   end
 
-  create_table "client_users", force: :cascade do |t|
+  create_table "customers", force: :cascade do |t|
     t.string "name", limit: 25
     t.string "surename", limit: 40
-    t.string "client_nick", limit: 20
+    t.string "customer_nick", limit: 20
     t.string "email", limit: 100, default: "", null: false
     t.string "phone_no", null: false
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["client_nick"], name: "index_client_users_on_client_nick"
+    t.index ["customer_nick"], name: "index_customers_on_customer_nick"
   end
 
 end

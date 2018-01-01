@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
 
-  layout "admin"
+  layout "main"
 
   def index
     @admin_user = AdminUser.sort_by_name
@@ -24,7 +24,7 @@ class AdminController < ApplicationController
   end
 
   def edit
-    @admin_user = AdminUser.find{params[:id]}
+    @admin_user = AdminUser.find(params[:id])
   end
 
   def update
@@ -38,12 +38,12 @@ class AdminController < ApplicationController
   end
 
   def delete
-    @admin_del = AdminUser.find{params[:id]}
+    @admin_del = AdminUser.find(params[:id])
   end
 
   def remove
     @admin_del = AdminUser.find(params[:id]).destroy
-    flash[:notice] = "administrator o nazwie użytkownika: #{@admin_del.admin_nick} został pomyślnie usunięty"
+    flash[:notice] = "dministrator o nazwie użytkownika: #{@admin_del.admin_nick} został pomyślnie usunięty"
     redirect_to(:action => "index")
   end
 
