@@ -10,18 +10,7 @@
   <body>
     <div class="container-fluid table-display h100">
       <div class="row table-row">
-        <div class="col-sm-3 table-cell h100 nav-menu" >
-          <h1>Menu</h1>
-          <div class="wrapper">
-            <ul class="nav-list">
-              <li><%= link_to("Administratorzy".upcase, {:action => "index", :controller => "admin"}, class: "link-decor-off") %></li>
-              <li><%= link_to("Klienci".upcase, {:action => "index", :controller => "customer"}, class: "link-decor-off") %></li>
-              <li><%= link_to("Rezerwacje".upcase, {:action => "index", :controller => "booking"}, class: "link-decor-off") %></li>
-            </ul>
-          </div>
-
-        </div>
-        <div class="col-sm-9 table-cell valign-top h100">
+        <div class="table-cell valign-top h100">
             <% if !flash[:notice].blank? %>
               <div class="alert alert-success" style="text-align: center; margin-top: 15px;">
                 <%= flash[:notice] %>

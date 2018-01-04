@@ -1,0 +1,42 @@
+<div class="right-pan-style h100">
+  <div class="container right-pan-view">
+    <h1 class="text-center right-pan-title">Edycja rezerwacji nr <%= @reservation.id %></h1>
+    <%= form_for(:reservation, :url => {:action => "update", :id => @reservation.id}) do |t| %>
+    <table class="table border-dark admin-table-style">
+      <tr >
+        <th class="col-sm-5"><%= t.label( "Imię") %></th>
+        <td colspan="2" class="col-sm-7"><%= t.text_field(:customer_name, :class => "form-control", placeholder: "Wpisz swoje imię") %></td>
+      </tr>
+      <tr >
+        <th><%= t.label("Nazwisko") %></th>
+        <td colspan="2"><%= t.text_field(:customer_surename, :class => "form-control", placeholder: "Wpisz swoje nazwisko") %></td>
+      </tr>
+      <tr >
+        <th><%= t.label("Numer stolika (ilość osób)") %></th>
+        <td colspan="2"><%= collection_select(:reservation, :table_id, Table.all, :id, :table_type, {}, {:class => "form-control"}) %></td>
+      </tr>
+      <tr >
+        <th><%= t.label("Ilość osób") %></th>
+        <td colspan="2"><%= t.text_field(:guests_quantity, :class => "form-control", placeholder: "Podaj ilość osób") %></td>
+      </tr>
+      <tr >
+        <th><%= t.label("Data rezerwacji") %></th>
+        <td colspan="2"><%= t.date_field(:booking_data, :class => "form-control", placeholder: "Podaj datę rezerwacji") %></td>
+      </tr>
+      <tr >
+        <th><%= t.label("Godziny rezerwacji") %></th>
+        <td><%= t.time_field(:booking_time_start, :class => "form-control", placeholder: "Od-->") %></td>
+        <td><%= t.time_field(:booking_time_end, :class => "form-control", placeholder: "-->Do") %></td>
+      </tr>
+      <tr >
+        <th><%= t.label("Uwagi") %></th>
+        <td colspan="2"><%= t.text_area(:comment, :class => "form-control", placeholder: "Wpisz dodatkowe informacje") %></td>
+      </tr>
+    </table>
+    <div style="text-align: center;">
+      <%= link_to("Wróć", {:action => "index"}, :class => "btn btn-danger") %>
+      <%= submit_tag("Aktualizuj", :class => "btn btn-success") %>
+    </div>
+  <%end%>
+</div>
+</div>

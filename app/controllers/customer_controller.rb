@@ -1,7 +1,8 @@
 class CustomerController < ApplicationController
 
   layout "main"
-
+  before_action :check_login
+  
   def index
     @customer_user = Customer.sort_by_name
   end

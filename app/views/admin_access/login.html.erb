@@ -1,0 +1,19 @@
+
+<div class="container right-pan-view">
+  <%= form_tag(:action => 'admin_login') do %>
+    <table class="container table bg-info noborder" style="width: 40%; margin-top: 200px;">
+      <tr>
+        <td><%= label_tag(:admin_user, "Użytkownik:") %></td>
+        <td><%= text_field_tag(:admin_user) %></td>
+      </tr>
+      <tr>
+        <td><%= label_tag(:password, "Hasło:") %></td>
+        <td><%= password_field_tag(:password) %></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><%= submit_tag("Zaloguj", :class => "btn btn-info") %></td>
+      </tr>
+    </table>
+  <%end%>
+</div>

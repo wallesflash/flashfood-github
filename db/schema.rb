@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171208203735) do
+ActiveRecord::Schema.define(version: 20180102235024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,17 +27,18 @@ ActiveRecord::Schema.define(version: 20171208203735) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.string "client_name", limit: 25
-    t.string "client_surename", limit: 40
-    t.string "client_nick", limit: 20
-    t.string "table_no"
+    t.string "customer_name", limit: 25
+    t.string "customer_surename", limit: 40
+    t.string "customer_nick", limit: 20
+    t.integer "table_id"
     t.string "guests_quantity", null: false
     t.date "booking_data"
-    t.time "booking_time"
+    t.time "booking_time_start"
+    t.time "booking_time_end"
     t.string "comment", limit: 250
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["client_surename"], name: "index_bookings_on_client_surename"
+    t.index ["customer_surename"], name: "index_bookings_on_customer_surename"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -50,6 +51,11 @@ ActiveRecord::Schema.define(version: 20171208203735) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_nick"], name: "index_customers_on_customer_nick"
+  end
+
+  create_table "tables", force: :cascade do |t|
+    t.string "table_type"
+    t.string "guests_quantity"
   end
 
 end

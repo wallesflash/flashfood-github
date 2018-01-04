@@ -1,139 +1,168 @@
 // Place all the styles related to the admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-
-html, body{
+body,
+html {
   font-family: "open sans", "Halvetica Neue", Halvetica, Arial, sans-serif;
-  background-color: #029e45;
-  color: rgb(0, 0, 0);
+  background: image-url("scuffedstatic_blue.jpg");
+  background-size: cover;
+  color: #247a7d;
   font-size: 16px;
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
-.h100{
-  height: 100%;
-  // display: inline-block;
-}
-.row{
-  padding: 15px;
-}
-
-.table-cell{
-  display: table-cell;
-}
-
-.glyphicon, .fa{
-  font-size: 30px;
-  color: #000;
-}
-
-.box{
+.box {
   border: 1px rgb(222, 222, 222) solid;
 }
 
-.link-decor-off, .link-decor-off:hover{
-  text-decoration: none;
-  color: black;
+.h100 {
+  height: 100%;
 }
 
-.admin-table{
+.table-display {
+  display: table;
+  padding: 0;
   width: 100%;
 }
 
-.border-dark, tr, th, td{
+.table-row {
+  display: table-row;
+}
+
+.table-cell {
+  display: table-cell;
+  float: none;
+}
+
+.fa,
+.glyphicon {
+  font-size: 30px;
+  color: #FF9800;
+}
+
+.link-decor-off,
+.link-decor-off:hover {
+  text-decoration: none;
+  color: #e5ffe0;
+}
+
+.link-decor-off:hover {
+  font-weight: bold;
+}
+
+.link-decor-off #logout{
+  color: #247a7d;
+}
+
+.border-dark, td, th, tr{
   border: 1px solid black;
 }
 
+.admin-table-size {
+  width: 85%;
+}
 
-
-#admin-table-style tr:nth-child(even){
+.admin-table-style tr:nth-child(even) {
   background-color: #e6e6e6;
-}
-#admin-table-style tr:nth-child(odd){
-  background-color: #757171;
+  color: #000;
 }
 
-#admin-table-style tr:hover{
+.admin-table-style tr:nth-child(odd) {
+  background-color: #757171;
+  color: #000;
+}
+
+.admin-table-style tr:hover {
   background-color: #d79708;
   transition: background-color 0.3s ease-in-out;
 }
 
-#admin-table-style th {
-    background-color: #373131;
-    color: white;
+.admin-table-style th {
+  background-color: #373131;
+  color: white;
 }
 
-// #side-menu{
-//   background-color: rgb(16, 196, 127);
-//   padding: 0px;
-// }
-//
-// #side-menu h1{
-//   color: rgb(0, 0, 0);
-//   text-align: center;
-//   margin: 10px 0px;
-//   font-size: 25px;
-// }
-//
-// #side-menu ul{
-//   list-style: none;
-//   margin: 0px;
-// }
-//
-// #side-menu a{
-//   padding: 12px 20px;
-//   text-decoration: none;
-//   color: rgb(255, 255, 255);
-//   font-weight: bold;
-//   font-size: 16px;
-//   display: block;
-// }
-//
-// .display-table{
-//   display: table;
-//   height: 100%;
-//   padding: 0px;
-//   width: 100%;
-// }
-//
-// .display-table-row{
-//   display: table-row;
-//   height: 100%;
-// }
-//
-// .display-table-cell{
-//   display: table-cell;
-//   float: none;
-//   height: 100%;
-// }
-//
-// .valign-top{
-//   vertical-align: top;
-// }
-//
-// .nav-header ul li{
-//   list-style: none;
-//   margin-left: 15px;
-//   float: left;
-//   padding: 17px;
-// }
-//
-// #klik, #lorem {
-//     padding: 5px;
-//     text-align: center;
-//     background-color: #99d000;
-//     border: solid 1px #c3c3c3;
-// }
-//
-// #lorem {
-//     padding: 50px;
-//     display: none;
-// }
+.btn-booking {
+  color: #1b1a1a;
+  background-color: #ece2ba;
+}
+
+.right-pan-view {
+  width: 85%;
+  padding-top: 25px;
+}
+
+.right-pan-title {
+  margin-top: 50px;
+  color: #DC003A;
+}
+
+.right-pan-style {
+  background-color: rgba(255, 219, 153, 0.65);
+  width: 100%;
+}
+
+.nav-menu {
+  background-color: rgba(158, 210, 159, 0.65);
+  color: #e5ffe0;
+}
+
+.nav-menu h1 {
+  padding: 0;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.nav-list {
+  list-style-type: none;
+}
+
+.wrapper {
+  text-align: center;
+}
+
+.wrapper ul {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper li {
+  // float: left;
+  padding: 2px 5px;
+}
+
+.col-sm-9 {
+  padding: 0;
+}
+
+.counter {
+  padding: 15px;
+  border-radius: 5px;
+  background-color: black;
+  font-size: 16px;
+  color: #FF9800;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.valign-top {
+  vertical-align: top;
+}
+
+.noborder tr td{
+  border: none;
+}

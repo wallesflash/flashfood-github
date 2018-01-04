@@ -1,46 +1,29 @@
-<div class="row">
-  <header>
-    <div class="col-md-5">
-
-
+<div class="right-pan-style h100">
+  <div class="container right-pan-view">
+    <header>
+      <div class="row">
+        <div class="col-md-5">
+          <p><%= "Panel administratora".upcase %></p>
+        </div>
+        <div class="col-md-7">
+          <ul class="pull-right list-inline">
+            <li>
+              <a href="#" class="link-decor-off">
+                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                <span><%= link_to("Logout", {:action => "logout", :controller => "admin_access"}) %></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <h1 class="text-center right-pan-title">Lista użytkowników</h1>
+    <div class="pull-right counter">
+      Ilość użytkowników:
+      <%= @customer_user.size %>
     </div>
-    <div class="col-md-7">
-      <ul class="pull-right list-inline">
-        <li>
-          <a href="#">
-            <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-            <span class="label label-warning">3</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-            <span class="label label-success">3</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="link-decor-off">
-            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-            <span>Logout</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </header>
-</div>
-
-
-<div class="table-cell">
-  <%= link_to("Dodaj klienta", {:action => "new"}, :class => "btn btn-mini btn-primary")%>
-  <p class="row pull-right">
-    Nb. of customers: <%= @customer_user.size %>
-  </p>
-
-
-    <table class="table border-dark" id="admin-table-style">
-      <tr>
-        <th colspan="6" class="text-center">Klienci</th>
-      </tr>
+    <%= link_to("Dodaj klienta", {:action => "new"}, :class => "btn btn-mini btn-primary")%>
+    <table class="table table-condensed border-dark admin-table-style">
       <tr>
         <th class="text-center">Imię</th>
         <th class="text-center">Nazwisko</th>
@@ -63,11 +46,5 @@
         </tr>
       <% end %>
     </table>
-
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius iste quam molestias, reprehenderit unde libero omnis, nobis nemo consequuntur ipsam laudantium error totam ex ut doloribus minus accusantium odit! Porro consectetur dolore odit temporibus nisi at perspiciatis architecto quos impedit repudiandae rerum adipisci numquam rem, ex, expedita aliquid distinctio nam libero. Assumenda enim sapiente ducimus inventore, officia vitae ipsam veniam dolore, culpa voluptatum iusto repellat ullam incidunt nemo quisquam aperiam minima nam magnam provident eligendi odio laudantium reiciendis deleniti distinctio. Molestias laudantium minus mollitia dolor, ipsum ea eos aut nulla nostrum nobis necessitatibus soluta qui maiores nihil voluptates placeat corporis delectus dicta eveniet fugit quaerat. Officiis omnis, praesentium ad assumenda quis totam molestias facilis laudantium quaerat aspernatur dolor cumque fugit dolorum ex nulla asperiores, eaque exercitationem! Magni, labore tempora voluptas! Vel cupiditate aperiam est similique corporis, ratione quam quae quos praesentium nobis quisquam. Rem delectus ad non, harum perferendis amet
-    </p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius iste quam molestias, reprehenderit unde libero omnis, nobis nemo consequuntur ipsam laudantium error totam ex ut doloribus minus accusantium odit! Porro consectetur dolore odit temporibus nisi at perspiciatis architecto quos impedit repudiandae rerum adipisci numquam rem, ex, expedita aliquid distinctio nam libero. Assumenda enim sapiente ducimus inventore, officia vitae ipsam veniam dolore, culpa voluptatum iusto repellat ullam incidunt nemo quisquam aperiam minima nam magnam provident eligendi odio laudantium reiciendis deleniti distinctio. Molestias laudantium minus mollitia dolor, ipsum ea eos aut nulla nostrum nobis necessitatibus soluta qui maiores nihil voluptates placeat corporis delectus dicta eveniet fugit quaerat. Officiis omnis, praesentium ad assumenda quis totam molestias facilis laudantium quaerat aspernatur dolor cumque fugit dolorum ex nulla asperiores, eaque exercitationem! Magni, labore tempora voluptas! Vel cupiditate aperiam est similique corporis, ratione quam quae quos praesentium nobis quisquam. Rem delectus ad non, harum perferendis amet
-    </p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius iste quam molestias, reprehenderit unde libero omnis, nobis nemo consequuntur ipsam laudantium error totam ex ut doloribus minus accusantium odit! Porro consectetur dolore odit temporibus nisi at perspiciatis architecto quos impedit repudiandae rerum adipisci numquam rem, ex, expedita aliquid distinctio nam libero. Assumenda enim sapiente ducimus inventore, officia vitae ipsam veniam dolore, culpa voluptatum iusto repellat ullam incidunt nemo quisquam aperiam minima nam magnam provident eligendi odio laudantium reiciendis deleniti distinctio. Molestias laudantium minus mollitia dolor, ipsum ea eos aut nulla nostrum nobis necessitatibus soluta qui maiores nihil voluptates placeat corporis delectus dicta eveniet fugit quaerat. Officiis omnis, praesentium ad assumenda quis totam molestias facilis laudantium quaerat aspernatur dolor cumque fugit dolorum ex nulla asperiores, eaque exercitationem! Magni, labore tempora voluptas! Vel cupiditate aperiam est similique corporis, ratione quam quae quos praesentium nobis quisquam. Rem delectus ad non, harum perferendis amet
-    </p>
   </div>
+</div>

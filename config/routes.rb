@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  # get 'booking/index'
+  #
+  # get 'booking/show'
+  #
+  # get 'booking/new'
+  #
+  # get 'booking/edit'
+  #
+  # get 'booking/delete'
+
   # get 'customer/index'
   #
   # get 'customer/new'
@@ -18,6 +28,8 @@ Rails.application.routes.draw do
   # get 'admin/edit'
   #
   # get 'admin/delete'
+
+  get "admin", :to => "admin#index"
 
   match ':controller(/:action(/:id))', :via => [:get, :post]
 

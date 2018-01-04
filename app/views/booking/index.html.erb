@@ -1,0 +1,54 @@
+<div class="right-pan-style h100">
+  <div class="container right-pan-view">
+    <header>
+      <div class="row">
+        <div class="col-md-5">
+          <p><%= "Panel administratora".upcase %></p>
+        </div>
+        <div class="col-md-7">
+          <ul class="pull-right list-inline">
+            <li>
+              <a href="#" class="link-decor-off">
+                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                <span><%= link_to("Logout", {:action => "logout", :controller => "admin_access"}) %></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <h1 class="text-center right-pan-title">Lista rezerwacji</h1>
+    <div class="pull-right counter">
+      Ilość rezerwacji:
+      <%= @bookings.size %>
+    </div>
+
+    <%= link_to("Nowa rezerwacja", {:action => "new"}, :class => "btn btn-booking")%>
+    <table class="table border-dark admin-table-style">
+      <tr class="no-padding">
+        <th class="text-center">L.p.</th>
+        <th class="text-center">Nr rezerwacji</th>
+        <th class="text-center">Imię i nazwisko</th>
+        <th class="text-center">Nick</th>
+        <th class="text-center">Data rez.</th>
+        <th colspan="2" class="text-center">Godziny</th>
+        <th class="text-center">Opcje</th>
+      </tr>
+      <% @bookings.each do |b| %>
+        <tr class="text-center">
+          <td><%= @lp += 1 %></td>
+          <td><%= b.id %></td>
+          <td><%= b.customer_name + " " + b.customer_surename %></td>
+          <td><%= b.customer_nick %></td>
+          <td><%= b.booking_data %></td>
+          <td colspan="2"><%= b.booking_time_start.to_s(:only_hour) + " - " + b.booking_time_end.to_s(:only_hour) %></td>
+          <td>
+            <%= link_to("Pokaż", {:action => "show", :id => b.id}, :class => "btn btn-xs btn-warning") %>
+            <%= link_to("Edycja", {:action => "edit", :id => b.id}, :class => "btn btn-xs btn-primary") %>
+            <%= link_to("Usuń", {:action => "delete", :id => b.id}, :class => "btn btn-xs btn-danger") %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

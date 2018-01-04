@@ -7,12 +7,19 @@
     <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'jquery', 'admin', 'data-turbolinks-track': 'reload' %>
 
-
   </head>
 
   <body>
-    <div class="h100">
-      <%= yield %>
+    <div class="h100 box">
+
+          <% if !flash[:notice].blank? %>
+            <div class="alert alert-success" style="text-align: center; margin-top: 15px;">
+              <%= flash[:notice] %>
+            </div>
+          <%end%>
+        <%= yield %>
+
     </div>
+
   </body>
 </html>

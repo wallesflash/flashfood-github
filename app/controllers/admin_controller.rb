@@ -1,6 +1,7 @@
 class AdminController < ApplicationController
 
   layout "main"
+  before_action :check_login
 
   def index
     @admin_user = AdminUser.sort_by_name
