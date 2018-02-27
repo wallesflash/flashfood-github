@@ -1,14 +1,16 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  protect_from_forgery prepend: true
 
-  private
-    def check_login
-      unless session[:admin_user_id]
-        flash[:notice] = "Nie jesteś zalogowany"
-        redirect_to(:controller => "admin_access", :action => "login")
-        return false
-      else
-        return true
-      end
-    end
+  # private
+  #
+  # Overwriting the sign_out redirect path method
+  # def after_sign_out_path_for(resource_or_scope)
+  #   if resource_or_scope == :admin
+  #     new_admin_session_path
+  #   elsif resource_or_scope == :customer
+  #     new_customer_session_path
+  #   else
+  #     root_path
+  #   end
+  # end
 end

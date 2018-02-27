@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flashfood</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'jquery', 'admin', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container-fluid table-display h100">
+      <div class="row table-row">
+        <div class="col-sm-3 table-cell h100 nav-menu">
+          <h1>Menu</h1>
+          <div class="wrapper">
+            <ul class="nav-list">
+              <% if customer_signed_in? %>
+              <li><%= link_to("Moje konto".upcase, {:action => "index", :controller => "admin"}, class: "link-decor-off") %></li>
+              <li><%= link_to("Moje rezerwacje".upcase, {:action => "index", :controller => "customer"}, class: "link-decor-off") %></li>
+              <li><%= link_to("Wyloguj".upcase, {:action => "index", :controller => "booking"}, class: "link-decor-off") %></li>
+              <% end %>
+            </ul>
+          </div>
+
+        </div>
+        <div class="col-sm-9 table-cell valign-top h100">
+          <% if !flash[:notice].blank? %>
+            <div class="alert alert-success notice">
+              <%= flash[:notice] %>
+            </div>
+          <%end%>
+          <div class="right-pan-style h100">
+            <div class="container right-pan-view">
+              <header>
+                <div class="row">
+                  <div class="col-md-5">
+                    <p><%= "Panel administratora".upcase %></p>
+                  </div>
+                  <div class="col-md-7">
+                    <ul class="pull-right list-inline">
+                      <li>
+                        <a href="#" class="link-decor-off">
+                          <span>
+                            <% if admin_signed_in? %>
+                              <p>Hello,
+                                <%= current_admin.name %> <br>
+                                <%= link_to("Wyloguj", destroy_admin_session_path, :method => "delete", :class => "link-decor-off") %><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                              </p>
+                              <br>
+                            <%end%>
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </header>
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </body>
+    </html>

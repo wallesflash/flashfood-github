@@ -1,5 +1,4 @@
-<div class="right-pan-style h100">
-  <div class="container right-pan-view">
+
 
     <h1 class="text-center right-pan-title">Usuwanie administratora</h1>
 
@@ -8,9 +7,7 @@
     <p style="color: white; font-weight: bold; font-size: 16px;">Czy napewno chcesz usunąc użytkownika: "<%= @admin_del.admin_nick %>"??</p>
 
     <div style="text-align: center;">
-      <%= link_to("Wróć", {:action=>"index"}, :class => "btn btn-info") %>
+      <%= link_to("Wróć", {:action=>"index"}, :class => "btn btn-primary") %>
       <%= submit_tag("Usuń użytkownika", :class => "btn btn-danger") %>
     </div>
   <%end%>
-</div>
-</div>

@@ -1,0 +1,36 @@
+<h1 class="text-center right-pan-title">Twoje rezerwacje</h1>
+
+
+<p><%= link_to("Nowa rezerwacja", {:action => "new"}, :class => "btn btn-success")%></p>
+<table class="table border-dark admin-table-style">
+  <tr class="no-padding">
+    <th class="text-center">L.p.</th>
+    <th class="text-center">Nr rezerwacji</th>
+    <th class="text-center">Data rez.</th>
+    <th colspan="2" class="text-center">Godziny</th>
+    <th class="text-center">Nr stolika</th>
+    <th class="text-center">Utworzono</th>
+    <% if current_customer.id == 14 %>
+      <th class="text-center">Imię i nazwisko</th>
+    <% end %>
+    <th class="text-center">Opcje</th>
+  </tr>
+  <% @bookings.each do |b| %>
+    <tr class="text-center">
+      <td><%= @lp += 1 %></td>
+      <td><%= b.id %></td>
+      <td><%= b.booking_data %></td>
+      <td colspan="2"><%= b.booking_hour_start.to_s(:only_hour) + " - " + b.booking_hour_end.to_s(:only_hour) %></td>
+      <td><%= b.table_id %></td>
+      <td><%= b.updated_at.to_s(:date_and_time) %></td>
+      <% if current_customer.id == 14 %>
+        <td><%= b.customer_name + " " + b.customer_surename %></td>
+      <% end %>
+      <td>
+        <%= link_to("Edycja", {:action => "edit", :id => b.id}, :class => "btn btn-xs btn-primary") %>
+        <%= link_to("Usuń", {:action => "delete", :id => b.id}, :class => "btn btn-xs btn-danger") %>
+        <%= link_to("PDF", {:action => "delete", :id => b.id}, :class => "btn btn-xs btn-default") %>
+      </td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flashfood</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'application', 'client_panel', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'jquery', 'admin', 'data-turbolinks-track': 'reload' %>
+
+  </head>i
+
+  <body id="admin_body">
+    <div class="container-fluid table-display h100">
+      <div class="row table-row">
+        <div class="col-sm-3 table-cell h100 nav-menu">
+          <div class="nav-title">
+            <h4>Restauracja</h4>
+            <h1>FlashFood</h1>
+          </div>
+          <div class="wrapper">
+              <ul class="nav-list">
+                <% if customer_signed_in? %>
+                  <li role="presentation" class="active"><%= link_to("Moje konto".upcase, {:action => "account_edit", :controller => "client_panel"}, class: "link-decor-off") %></li>
+                  <li role="presentation"><%= link_to("Moje rezerwacje".upcase, {:action => "my_booking", :controller => "client_panel"}, class: "link-decor-off") %></li>
+                <% end %>
+              </ul>
+          </div>
+        </div>
+          <% if flash[:notice] || flash[:error] %>
+            <div class="alert alert-success notice">
+              <%= flash[:notice] %>
+              <%= flash[:error] %>
+            </div>
+          <%end%>
+        </div>
+      </div>
+          <div class="right-pan-style h100">
+            <div class="container right-pan-view">
+              <header>
+                <div class="row">
+                  <div class="col-md-5">
+                    <p><%= "Panel użytkownika".upcase %></p>
+                  </div>
+                  <div class="col-md-7">
+                    <ul class="pull-right list-inline">
+                      <li>
+                        <a href="#" class="link-decor-off">
+                          <span>
+                            <% if customer_signed_in? %>
+                              <p>Hello,
+                                <%= current_customer.name %> <br>
+                                <%= link_to("Wyloguj", destroy_customer_session_path, :method => "delete", :class => "link-decor-off") %><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                              </p>
+                              <br>
+                            <%end%>
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </header>
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </body>
+    </html>

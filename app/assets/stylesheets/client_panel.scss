@@ -1,0 +1,26 @@
+// Place all the styles related to the client_panel controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body,
+html {
+  font-family: "open sans", "Halvetica Neue", Halvetica, Arial, sans-serif;
+  background: image-url("scuffedstatic_blue.jpg");
+  background-size: cover;
+  color: #e6e6e6;
+  font-size: 16px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.right-pan-style {
+  background-color: rgba(249, 88, 88, 0.6);
+  width: 100%;
+  margin: 0;
+}
+
+.right-pan-title {
+  margin-top: 35px;
+  color: #dd9200;
+}

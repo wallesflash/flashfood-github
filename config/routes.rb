@@ -1,35 +1,13 @@
 Rails.application.routes.draw do
-  # get 'booking/index'
-  #
-  # get 'booking/show'
-  #
-  # get 'booking/new'
-  #
-  # get 'booking/edit'
-  #
-  # get 'booking/delete'
 
-  # get 'customer/index'
-  #
-  # get 'customer/new'
-  #
-  # get 'customer/show'
-  #
-  # get 'customer/edit'
-  #
-  # get 'customer/delete'
+  get '/client_panel' => "client_panel#my_booking", :as => :customer_root
+  get '/booking' => "booking#index", :as => :admin_root
 
-  # get 'admin/index'
-  #
-  # get 'admin/show'
-  #
-  # get 'admin/new'
-  #
-  # get 'admin/edit'
-  #
-  # get 'admin/delete'
+  devise_for :admins, :class_name => 'Admin', :controllers => {:registrations => "admin/registrations", :sessions => 'admin/sessions' }
 
-  get "admin", :to => "admin#index"
+  devise_for :customers, :class_name => 'Customer', :controllers => {:registrations => "customer/registrations", :sessions => 'customer/sessions' }
+
+
 
   match ':controller(/:action(/:id))', :via => [:get, :post]
 

@@ -1,37 +1,29 @@
-<div class="right-pan-style h100">
-  <div class="container right-pan-view">
-    <h1 class="text-center right-pan-title">Edycja danych użytkownika: "<%= @admin_user.admin_nick %>"</h1>
-    <%= form_for(:admin_user, :url => {:action => "update", :id => @admin_user.id}) do |t| %>
-    <table class="table border-dark admin-table-style">
-      <tr >
-        <th><%= t.label(:name, "Imię") %></th>
-        <td><%= t.text_field(:name, :class => "form-control", placeholder: "Wpisz swoje imię") %></td>
-      </tr>
-      <tr >
-        <th><%= t.label(:surename, "Nazwisko") %></th>
-        <td><%= t.text_field(:surename, :class => "form-control", placeholder: "Wpisz swoje nazwisko") %></td>
-      </tr>
-      <tr >
-        <th><%= t.label(:admin_nick, "Nick") %></th>
-        <td><%= t.text_field(:admin_nick, :class => "form-control", placeholder: "Wpisz swój nick") %></td>
-      </tr>
-      <tr >
-        <th><%= t.label(:email, "Email") %></th>
-        <td><%= t.text_field(:email, :class => "form-control", placeholder: "Wpisz swój adres email") %></td>
-      </tr>
-      <tr >
-        <th><%= t.label(:password, "Hasło") %></th>
-        <td><%= t.password_field(:password, :class => "form-control", placeholder: "Wpisz hasło") %></td>
-      </tr>
-      <tr >
-        <th><%= t.label(:password_confirmation, "Potwierdzenie hasła") %></th>
-        <td><%= t.password_field(:password_confirmation, :class => "form-control", placeholder: "Powtórz wpisane hasło") %></td>
-      </tr>
-    </table>
-    <div style="text-align: center;">
-      <%= link_to("Wróć", {:action => "index"}, :class => "btn btn-danger") %>
-      <%= submit_tag("Zapisz zmiany", :class => "btn btn-success") %>
+    <h1 class="text-center right-pan-title">Edycja danych administratora: "<%= @admin_user.admin_nick %>"</h1>
+    <%= form_for(:admin_user, :url => {:action => "update", :id => @admin_user.id}) do |f| %>
+
+    <div class="container table bg-dark" style="width: 40%; border-radius: 5px; padding: 20px;">
+      <form>
+        <div class="form-group">
+          <label>Imię</label>
+          <%= f.text_field(:name, class: "form-control") %>
+        </div>
+        <div class="form-group">
+          <label>Nazwisko</label>
+          <%= f.text_field(:surename, class: "form-control") %>
+        </div>
+        <div class="form-group">
+          <label>Nazwa użytkownika</label>
+          <%= f.text_field(:admin_nick, class: "form-control") %>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <%= f.email_field(:email, class: "form-control") %>
+        </div>
+        <div class="text-center">
+          <%= link_to("Wróć", {:action => "index"}, :class => "btn btn-primary") %>
+          <%= f.submit("Zapisz zmiany", :class => "btn btn-danger") %>
+          <%= link_to("Zmiana hasła", {:action => "password_edit", :id => @admin_user.id}, :class => "btn btn-warning") %>
+        </div>
+      </form>
     </div>
-  <%end%>
-</div>
-</div>
+  <% end %>

@@ -1,3 +1,15 @@
-// Place all the styles related to the customer controller here.
+// Place all the styles related to the admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body,
+html {
+  font-family: "open sans", "Halvetica Neue", Halvetica, Arial, sans-serif;
+  background: image-url("scuffedstatic_blue.jpg");
+  background-size: cover;
+  color: #ff0000;
+  font-size: 16px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

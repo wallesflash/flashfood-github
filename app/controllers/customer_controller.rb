@@ -1,17 +1,15 @@
 class CustomerController < ApplicationController
 
-  layout "main"
-  before_action :check_login
-  
+  before_action :authenticate_admin!
+  layout "admin"
+
+
   def index
-    @customer_user = Customer.sort_by_name
+    @customer_user = Customer.all
   end
 
   def new
     @customer_new = Customer.new
-  end
-
-  def show
   end
 
   def create
@@ -21,6 +19,20 @@ class CustomerController < ApplicationController
       redirect_to(:action => "index")
     else
       render("new")
+    end
+  end
+
+  def password_edit
+    @customer_pwd = Customer.find(params[:id])
+  end
+
+  def password_update
+    @customer_pwd = Customer.find(params[:id])
+    if @customer_pwd.update_attributes(password_update_params)
+      flash[:notice] = "Hasło użytkownika: #{@customer_pwd.customer_nick} zostało zmienione"
+      redirect_to(:action => "edit", :id => @customer_pwd.id)
+    else
+      render("password_edit")
     end
   end
 
@@ -52,6 +64,10 @@ class CustomerController < ApplicationController
 
     def customer_user_params
       params.require(:customer_user).permit(:name, :surename, :email, :customer_nick, :phone_no, :password, :password_confirmation)
+    end
+
+    def password_update_params
+      params.require(:customer_pwd).permit(:password, :password_confirmation)
     end
 
 

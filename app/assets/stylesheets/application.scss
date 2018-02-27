@@ -1,91 +1,244 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- */
+// Place all the styles related to the admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
- // @import "bootstrap-sprockets";
- // @import "bootstrap";
- // @import "font-awesome-sprockets";
- // @import "font-awesome";
- //
- //
- // html, body{
- //   font-family: "open sans", "Halvetica Neue", Halvetica, Arial, sans-serif;
- //   background-color: #3AAFA9;
- //   color: rgb(255, 255, 255);
- //   height: 100%;
- //   font-size: 16px;
- // }
- //
- // .glyphicon, .fa{
- //   font-size: 30px;
- //   color: #000;
- // }
- //
- // .box{
- //   border: 1px rgb(222, 222, 222) solid;
- // }
- //
- // #side-menu{
- //   background-color: rgb(16, 196, 127);
- //   padding: 0px;
- // }
- //
- // #side-menu h1{
- //   color: rgb(0, 0, 0);
- //   text-align: center;
- //   margin: 10px 0px;
- //   font-size: 25px;
- // }
- //
- // #side-menu ul{
- //   list-style: none;
- //   margin: 0px;
- // }
- //
- // #side-menu a{
- //   padding: 12px 20px;
- //   text-decoration: none;
- //   color: rgb(255, 255, 255);
- //   font-weight: bold;
- //   font-size: 16px;
- //   display: block;
- // }
- //
- // .display-table{
- //   display: table;
- //   height: 100%;
- //   padding: 0px;
- //   width: 100%;
- // }
- //
- // .display-table-row{
- //   display: table-row;
- //   height: 100%;
- // }
- //
- // .display-table-cell{
- //   display: table-cell;
- //   float: none;
- //   height: 100%;
- // }
- //
- // .valign-top{
- //   vertical-align: top;
- // }
- //
- // .nav-header ul li{
- //   list-style: none;
- //   margin-left: 15px;
- //   float: left;
- //   padding: 17px;
- // }
+
+
+.box {
+  border: 1px rgb(222, 222, 222) solid;
+}
+
+.h100 {
+  height: 100%;
+}
+
+.bg-red{
+  background: #b62e2e;
+  color: #e0e0e0;
+}
+
+.bg-blue{
+  background: #4a849d;
+}
+
+.bg-yellow{
+  background: #e4da80;
+}
+.bg-grey{
+  background: #c3c3c3;
+}
+.bg-dark{
+  background: #383636;
+}
+
+.table-display {
+  display: table;
+  padding: 0;
+  width: 100%;
+}
+
+.table-row {
+  display: table-row;
+}
+
+.table-cell {
+  display: table-cell;
+  float: none;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.fa,
+.glyphicon {
+  font-size: 16px;
+  color: #FF9800;
+}
+
+.link-decor-off,
+.link-decor-off:hover {
+  text-decoration: none;
+  color: #e5ffe0;
+}
+
+// .link-decor-off:hover {
+//   font-weight: bold;
+// }
+
+.pass_forgot-style{
+  text-decoration: none;
+  padding-top: 5px;
+  margin: 0;
+  font-size: 14px;
+  color: #247a7d;
+}
+.pass_forgot-style:hover{
+  text-decoration: none;
+  color: inherit;
+}
+
+.link-decor-off #logout{
+  color: #247a7d;
+}
+
+.border-dark, td, th, tr{
+  border: 1px solid black;
+}
+
+.admin-table-size {
+  width: 85%;
+}
+
+.admin-table-style tr:nth-child(even) {
+  background-color: #e6e6e6;
+  color: #000;
+}
+
+.admin-table-style tr:nth-child(odd) {
+  background-color: #757171;
+  color: #000;
+}
+
+.admin-table-style tr:hover {
+  background-color: #d79708;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.admin-table-style th {
+  background-color: #383636;
+  color: white;
+  text-align: center;
+}
+
+.btn-booking {
+  color: #1b1a1a;
+  background-color: #ece2ba;
+}
+
+.right-pan-view {
+  width: 85%;
+  padding-top: 20px;
+}
+
+
+
+.notice {
+  width: 44%;
+  margin-left: 28%;
+  position: absolute;
+  text-align: center;
+}
+
+.nav-menu {
+  background-color: rgba(158, 210, 159, 0.65);
+  color: #e5ffe0;
+}
+
+.nav-title {
+  padding: 0;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.nav-title h4{
+  margin-bottom: 0;
+}
+
+.nav-title h1{
+  margin-top: 0;
+}
+
+
+.nav-list {
+  list-style-type: none;
+}
+
+.wrapper {
+  text-align: center;
+}
+
+.wrapper ul {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper li {
+  // float: left;
+  padding: 2px 5px;
+}
+
+.col-sm-9 {
+  padding: 0;
+}
+
+.counter {
+  padding: 15px;
+  border-radius: 5px;
+  background-color: black;
+  font-size: 16px;
+  color: #FF9800;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.valign-top {
+  vertical-align: top;
+}
+
+tr, td{
+  border: none;
+  border-top: 0px;
+
+
+}
+
+.noborder{
+  border-width: 0;
+  // border-collapse: collapse;
+  outline: none;
+}
+
+.noborder tr td:first-child{
+  text-align: right;
+}
+
+.form-control{
+  font-size: 16px;
+  // font-weight: bold;
+}
+
+.inline-form-view{
+  display: inline-block;
+  width: 40%;
+  text-align: left;
+}
+
+.inline-form-view{
+
+}
+
+.field_with_errors label{
+  color: #f76767;
+  font-weight: normal;
+  margin-top: 5px;
+}
+.field_with_errors input{
+  border: 2px solid #ff0000;
+}
+
+.error_alert{
+  width: 44%;
+  margin-left: 28%;
+  // position: relative;
+  text-align: center;
+}

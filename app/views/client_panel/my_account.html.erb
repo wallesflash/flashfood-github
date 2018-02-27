@@ -1,0 +1,25 @@
+<table class="container table border-dark admin-table-style" style="width: 60%; border-radius: 5px;">
+  <tr>
+    <th class="col-sm-5">Imię i nazwisko</th>
+    <td class="col-sm-7"><%= @client_info.name + " " + @client_info.surename %></td>
+  </tr>
+  <tr>
+    <th>Nazwa użytkownika</th>
+    <td><%= @client_info.customer_nick %></td>
+  </tr>
+  <tr>
+    <th>Nr telefonu</th>
+    <td><%= @client_info.phone_no %></td>
+  </tr>
+  <tr>
+    <th>Adres email</th>
+    <td><%= @client_info.email %></td>
+  </tr>
+  <tr>
+    <th>Nr klienta</th>
+    <td><%= @client_info.id %></td>
+  </tr>
+</table>
+<div style="text-align: center;">
+  <%= link_to("Edytuj", {:action => "account_edit", :id => @client_info.id}, :class => "btn btn-warning") %>
+</div>

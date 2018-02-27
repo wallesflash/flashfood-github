@@ -1,39 +1,22 @@
-<div class="right-pan-style h100">
-  <div class="container right-pan-view">
-    <header>
-      <div class="row">
-        <div class="col-md-5">
-          <p><%= "Panel administratora".upcase %></p>
-        </div>
-        <div class="col-md-7">
-          <ul class="pull-right list-inline">
-            <li>
-              <a href="#" class="link-decor-off">
-                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                <span><%= link_to("Logout", {:action => "logout", :controller => "admin_access"}) %></span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </header>
     <h1 class="text-center right-pan-title">Lista użytkowników</h1>
     <div class="pull-right counter">
       Ilość użytkowników:
       <%= @customer_user.size %>
     </div>
-    <%= link_to("Dodaj klienta", {:action => "new"}, :class => "btn btn-mini btn-primary")%>
-    <table class="table table-condensed border-dark admin-table-style">
+    <%= link_to("Nowy klient", {:action => "new"}, :class => "btn btn-mini btn-success")%>
+    <table class="table border-dark admin-table-style">
       <tr>
+        <th class="text-center">Nr klienta</th>
         <th class="text-center">Imię</th>
         <th class="text-center">Nazwisko</th>
         <th class="text-center">Nick</th>
         <th class="text-center">Email</th>
         <th class="text-center">Nr telefonu</th>
-        <th class="text-center">Akcja</th>
+        <th class="text-center">Opcje</th>
       </tr>
       <% @customer_user.each do |cu| %>
         <tr class="text-center">
+          <td><%= cu.id %></td>
           <td><%= cu.name %></td>
           <td><%= cu.surename %></td>
           <td><%= cu.customer_nick %></td>
@@ -42,9 +25,8 @@
           <td>
             <%= link_to("Edycja", {:action => "edit", :id => cu.id}, :class => "btn btn-xs btn-primary") %>
             <%= link_to("Usuń", {:action => "delete", :id => cu.id}, :class => "btn btn-xs btn-danger") %>
+            <%= link_to("Rezerwuj", {:action => "", :id => cu.id}, :class => "btn btn-xs btn-warning") %>
           </td>
         </tr>
       <% end %>
     </table>
-  </div>
-</div>

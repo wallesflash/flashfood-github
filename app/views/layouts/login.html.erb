@@ -8,17 +8,13 @@
   </head>
 
   <body>
-    <div class="container-fluid table-display h100">
-      <div class="row table-row">
-        <div class="table-cell valign-top h100">
+    <div class="container-fluid">
             <% if !flash[:notice].blank? %>
               <div class="alert alert-success" style="text-align: center; margin-top: 15px;">
                 <%= flash[:notice] %>
               </div>
             <%end%>
           <%= yield %>
-        </div>
-      </div>
     </div>
   </body>
 </html>

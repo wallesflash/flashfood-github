@@ -1,35 +1,18 @@
-<div class="right-pan-style h100">
-  <div class="container right-pan-view">
-    <header>
-      <div class="row">
-        <div class="col-md-5">
-          <p><%= "Panel administratora".upcase %></p>
-        </div>
-        <div class="col-md-7">
-          <ul class="pull-right list-inline">
-            <li>
-              <a href="#" class="link-decor-off">
-                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                <span><%= link_to("Logout", {:action => "logout", :controller => "admin_access"}) %></span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </header>
     <h1 class="text-center right-pan-title">Lista administratorów</h1>
     <div class="pull-right counter">
       Nb. of users:
       <%= @admin_user.size %>
     </div>
-    <%= link_to("Dodaj administratora strony", {:action => "new"}, :class => "btn btn-mini btn-primary")%>
+    <%= link_to("Nowy administrator", {:action => "new"}, :class => "btn btn-mini btn-success")%>
     <table class="table border-dark admin-table-style">
       <tr>
         <th class="text-center">Imię</th>
         <th class="text-center">Nazwisko</th>
         <th class="text-center">Nick</th>
         <th class="text-center">Email</th>
-        <th class="text-center">Akcja</th>
+        <% if current_admin.id == 6 %>
+        <th class="text-center">Opcje</th>
+        <% end %>
       </tr>
       <% @admin_user.each do |au| %>
         <tr class="text-center">
@@ -37,12 +20,12 @@
           <td><%= au.surename %></td>
           <td><%= au.admin_nick %></td>
           <td><%= au.email %></td>
+          <% if current_admin.id == 6 %>
           <td>
             <%= link_to("Edycja", {:action => "edit", :id => au.id}, :class => "btn btn-xs btn-primary") %>
             <%= link_to("Usuń", {:action => "delete", :id => au.id}, :class => "btn btn-xs btn-danger") %>
           </td>
+          <% end %>
         </tr>
       <% end %>
     </table>
-  </div>
-</div>

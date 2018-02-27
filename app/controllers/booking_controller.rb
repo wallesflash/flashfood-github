@@ -1,7 +1,7 @@
 class BookingController < ApplicationController
-
-  layout "main"
-  before_action :check_login
+  before_action :authenticate_admin!
+  layout "admin"
+  # before_action :check_login
 
   def index
     @bookings = Booking.sort_by_date
@@ -54,7 +54,7 @@ class BookingController < ApplicationController
   private
 
   def booking_params
-    params.require(:reservation).permit(:customer_name, :customer_surename, :table_id, :guests_quantity, :booking_data, :booking_time_start, :booking_time_end, :comment)
+    params.require(:reservation).permit(:customer_name, :customer_surename, :phone_no, :customer_id, :table_id, :booking_data, :booking_hour_start, :booking_hour_end, :comment)
   end
 
 

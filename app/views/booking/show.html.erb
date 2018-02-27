@@ -1,19 +1,24 @@
-<div class="right-pan-style h100">
-  <div class="container right-pan-view">
+
     <h1 class="text-center right-pan-title">Szczegóły rezerwacji nr
       <%= @reservation.id %></h1>
-    <table class="table">
+<div class="container table bg-dark" style="width: 50%; border-radius: 5px; padding: 20px;">
+    <table class="table admin-table-style">
       <tr>
         <th class="col-sm-5">Imię i nazwisko</th>
         <td class="col-sm-7"><%= @reservation.customer_name + " " + @reservation.customer_surename %></td>
       </tr>
       <tr>
-        <th>Nick</th>
-        <td><%= @reservation.customer_nick %></td>
+        <th>Nr klienta</th>
+        <td><%= @reservation.customer_id %></td>
       </tr>
       <tr>
-        <th>Ilość osób</th>
-        <td><%= @reservation.guests_quantity%></td>
+        <th>Nr telefonu</th>
+        <% if @reservation.customer_id != 14 %>
+          <td><%= Customer.find(@reservation.customer_id).phone_no %></td>
+        <% end %>
+        <% if @reservation.customer_id == 14 %>
+          <td><%= @reservation.phone_no %></td>
+        <% end %>
       </tr>
       <tr>
         <th>Data rezerwacji</th>
@@ -21,7 +26,7 @@
       </tr>
       <tr>
         <th>Godziny rezerwacji</th>
-        <td><%= @reservation.booking_time_start.to_s(:only_hour) + " - " + @reservation.booking_time_end.to_s(:only_hour) %></td>
+        <td><%= @reservation.booking_hour_start.to_s(:only_hour) + " - " + @reservation.booking_hour_end.to_s(:only_hour) %></td>
       </tr>
       <tr>
         <th>Nr stolika</th>
@@ -36,5 +41,4 @@
       <%= link_to("Wróć", {:action => "index"}, :class => "btn btn-primary") %>
       <%= link_to("Edytuj", {:action => "edit", :id => @reservation.id}, :class => "btn btn-warning") %>
     </div>
-  </div>
 </div>

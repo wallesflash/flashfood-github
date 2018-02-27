@@ -1,42 +1,53 @@
-<div class="right-pan-style h100">
-  <div class="container right-pan-view">
-    <h1 class="text-center right-pan-title">Nowa rezerwacja</h1>
-    <%= form_for(:reservation, :url => {:action => "create"}) do |t| %>
-    <table class="table border-dark admin-table-style">
-      <tr >
-        <th><%= t.label( "Imię") %></th>
-        <td colspan="2"><%= t.text_field(:customer_name, :class => "form-control", placeholder: "Wpisz swoje imię") %></td>
-      </tr>
-      <tr >
-        <th><%= t.label("Nazwisko") %></th>
-        <td colspan="2"><%= t.text_field(:customer_surename, :class => "form-control", placeholder: "Wpisz swoje nazwisko") %></td>
-      </tr>
-      <tr >
-        <th><%= t.label("Numer stolika (ilość osób)") %></th>
-        <td colspan="2"><%= collection_select(:reservation, :table_id, Table.all, :id, :table_type, {:prompt => 'Wybierz stolik'}, {:class => "form-control"}) %></td>
-      </tr>
-      <tr >
-        <th><%= t.label("Ilość osób") %></th>
-        <td colspan="2"><%= t.text_field(:guests_quantity, :class => "form-control", placeholder: "Podaj ilość osób") %></td>
-      </tr>
-      <tr >
-        <th><%= t.label("Data rezerwacji") %></th>
-        <td colspan="2"><%= t.date_field(:booking_data, :class => "form-control", placeholder: "Podaj datę rezerwacji") %></td>
-      </tr>
-      <tr >
-        <th><%= t.label("Godziny rezerwacji") %></th>
-        <td><%= t.time_field(:booking_time_start, :class => "form-control", placeholder: "Od-->") %></td>
-        <td><%= t.time_field(:booking_time_end, :class => "form-control", placeholder: "-->Do") %></td>
-      </tr>
-      <tr >
-        <th><%= t.label("Uwagi") %></th>
-        <td colspan="2"><%= t.text_area(:comment, :class => "form-control", placeholder: "Wpisz dodatkowe informacje") %></td>
-      </tr>
-    </table>
-    <div style="text-align: center;">
-      <%= link_to("Wróć", {:action => "index"}, :class => "btn btn-danger") %>
-      <%= submit_tag("Utwórz rezerwację", :class => "btn btn-success") %>
-    </div>
-  <%end%>
+<h1 class="text-center right-pan-title">Nowa rezerwacja</h1>
+<%= form_for(:reservation, :url => {:action => "create"}) do |f| %>
+
+<div class="container table bg-dark text-center" style="width: 70%; border-radius: 5px; padding: 20px;">
+  <form>
+  <div class="inline-form-view" style="margin-right: 2%;">
+      <%= f.hidden_field(:customer_id, :value => 14) %>
+      <div class="form-group">
+        <label>Imię</label>
+        <%= f.text_field(:customer_name, :class => "form-control", placeholder: "Podaj imię klienta") %>
+      </div>
+      <div class="form-group">
+        <label>Nazwisko</label>
+        <%= f.text_field(:customer_surename, :class => "form-control", placeholder: "Podaj nazwisko klienta") %>
+      </div>
+      <div class="form-group">
+        <label>Nr telefonu</label>
+        <%= f.text_field(:phone_no, :class => "form-control", placeholder: "Podaj numer telefonu") %>
+      </div>
+  </div>
+  <div class="inline-form-view" style="margin-left: 2%;">
+      <div class="form-group">
+        <label>Nr stolika</label>
+        <%= collection_select(:reservation, :table_id, Table.order("id ASC"), :id, :table_type, {:prompt => 'Wybierz stolik'}, {:class => "form-control"}) %>
+      </div>
+      <div class="form-group">
+        <label>Data rezerwacji</label>
+        <%= f.date_field(:booking_data, :class => "form-control", placeholder: "Podaj datę rezerwacji") %>
+      </div>
+      <div class="form-group" style="height: 50px; margin-bottom: 25px;">
+        <label>Godziny rezerwacji</label>
+        <div class="form-inline">
+          <div class="form-group col-sm-6">
+            <%= collection_select(:reservation, :booking_hour_start, BookingHour.order("id ASC"), :start, :short_hour_start, {}, {:class => "form-control", :style => "width: 100%;"}) %>
+          </div>
+          <div class="form-group col-sm-6">
+            <%= collection_select(:reservation, :booking_hour_end, BookingHour.order("id ASC"), :end, :short_hour_end, {}, {:class => "form-control", :style => "width: 100%;"}) %>
+          </div>
+        </div>
+      </div>
+
+  </div>
+  <div class="form-group" style="margin-top: 10px;">
+        <label>Dodatkowe informacje</label>
+        <%= f.text_field(:comment, :class => "form-control", placeholder: "Wpisz dodatkowe informacje") %>
+      </div>
+  <div class="text-center">
+    <%= link_to("Wróć", {:action => "index"}, :class => "btn btn-primary") %>
+    <%= submit_tag("Utwórz rezerwację", :class => "btn btn-success") %>
+  </div>
+</form>
 </div>
-</div>
+<%end%>

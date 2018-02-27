@@ -1,16 +1,14 @@
-<div class="right-pan-style h100">
-  <div class="container right-pan-view">
+
 
     <h1 class="text-center right-pan-title">Usuwanie rezerwacji</h1>
 
-    <%= form_for(:reserv_del, :url=>{:action => "remove", :id => @reserv_del.id}) do |field| %>
+  <%= form_for(:reserv_del, :url=>{:action => "remove", :id => @reserv_del.id}) do |field| %>
 
     <p style="color: white; font-weight: bold; font-size: 16px;">Czy napewno chcesz usunąc reserwację nr : "<%= @reserv_del.id %>"??</p>
 
     <div style="text-align: center;">
-      <%= link_to("Wróć", {:action=>"index"}, :class => "btn btn-info") %>
+      <%= link_to("Wróć", {:action=>"index"}, :class => "btn btn-primary") %>
       <%= submit_tag("Usuń rezerwaję", :class => "btn btn-danger") %>
     </div>
+
   <%end%>
-</div>
-</div>

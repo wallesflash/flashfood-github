@@ -1,0 +1,39 @@
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :validate => true) do |f| %>
+
+<table class="container table bg-yellow noborder" style="width: 60%; border: none; border-collapse: collapse;">
+  <th colspan="2" class="text-center bg-red">Rejestracja administratora</th>
+  <tr>
+    <td><%= f.label "Imię" %></td>
+    <td><%= f.text_field :name, autofocus: true, autocomplete: "name" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label "Nazwisko" %></td>
+    <td><%= f.text_field :surename, autofocus: true, autocomplete: "surename" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label "Nazwa użytkownika" %></td>
+    <td><%= f.text_field :admin_nick, autofocus: true, autocomplete: "admin_nick" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :email %></td>
+    <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label "Hasło" %>
+      <td><%= f.password_field :password, autocomplete: "off" %></td>
+    </td>
+  </tr>
+  <tr>
+    <td><%= f.label "Powtórz hasło" %></td>
+    <td><%= f.password_field :password_confirmation, autocomplete: "off" %></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><%= f.submit("Dodaj administratora", :class => "btn btn-info") %></td>
+  </tr>
+  <tr class="bg-red">
+    <td colspan="2" style="text-align: left;"><%= render "admins/shared/links" %></td>
+  </tr>
+</table>
+<% end %>

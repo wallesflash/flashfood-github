@@ -1,0 +1,2 @@
+module ClientPanelHelper
+end

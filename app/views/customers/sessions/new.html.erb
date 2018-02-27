@@ -1,0 +1,33 @@
+<% if flash[:alert] %>
+  <div class="alert alert-danger error_alert">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
+<div class="container right-pan-view">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), :validate => true) do |f| %>
+  <div class="container table bg-dark" style="width: 40%; border-radius: 5px; padding: 20px;">
+    <form>
+      <div class="form-group">
+        <label>Nazwa użytkownika</label>
+        <%= f.text_field(:customer_nick, class: "form-control") %>
+      </div>
+      <div class="form-group">
+        <label>Hasło</label>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      </div>
+      <% if devise_mapping.rememberable? -%>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label "Zapamiętaj mnie" %>
+        </div>
+      <% end -%>
+      <div class="text-center">
+        <%= f.submit "Zaloguj", :class => "btn btn-success btn-block login" %>
+        <br>
+        <%= render "customers/shared/links" %>
+      </div>
+    </form>
+  </div>
+  <% end %>
+</div>

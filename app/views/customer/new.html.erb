@@ -1,41 +1,42 @@
-<div class="right-pan-style h100">
-  <div class="container right-pan-view">
+
     <h1 class="text-center right-pan-title">Nowy klient</h1>
-    <%= form_for(:customer_user, :url => {:action => "create"}) do |t| %>
-    <table class="table border-dark admin-table-style">
-      <tr >
-        <th><%= t.label("Imię") %></th>
-        <td><%= t.text_field(:name, :class => "form-control", placeholder: "Wpisz swoje imię") %></td>
-      </tr>
-      <tr >
-        <th><%= t.label("Nazwisko") %></th>
-        <td><%= t.text_field(:surename, :class => "form-control", placeholder: "Wpisz swoje nazwisko") %></td>
-      </tr>
-      <tr >
-        <th><%= t.label("Nick") %></th>
-        <td><%= t.text_field(:customer_nick, :class => "form-control", placeholder: "Wpisz swój nick") %></td>
-      </tr>
-      <tr >
-        <th><%= t.label("Email") %></th>
-        <td><%= t.text_field(:email, :class => "form-control", placeholder: "Wpisz swój adres email") %></td>
-      </tr>
-      <tr >
-        <th><%= t.label("Nr telefonu") %></th>
-        <td><%= t.text_field(:phone_no, :class => "form-control", placeholder: "Wpisz numer telefonu") %></td>
-      </tr>
-      <tr >
-        <th><%= t.label("Hasło") %></th>
-        <td><%= t.password_field(:password, :class => "form-control", placeholder: "Wpisz hasło") %></td>
-      </tr>
-      <tr >
-        <th><%= t.label("Potwierdzenie hasła") %></th>
-        <td><%= t.password_field(:password_confirmation, :class => "form-control", placeholder: "Powtórz wpisane hasło") %></td>
-      </tr>
-    </table>
-    <div style="text-align: center;">
-      <%= link_to("Wróć", {:action => "index"}, :class => "btn btn-danger") %>
-      <%= submit_tag("Dodaj klienta", :class => "btn btn-success") %>
+    <%= form_for(:customer_user, :url => {:action => "create"}) do |f| %>
+
+    <div class="container table bg-dark" style="width: 40%; border-radius: 5px; padding: 20px;">
+      <form>
+        <div class="form-group">
+          <label>Imię</label>
+          <%= f.text_field(:name, class: "form-control") %>
+        </div>
+        <div class="form-group">
+          <label>Nazwisko</label>
+          <%= f.text_field(:surename, class: "form-control") %>
+        </div>
+        <div class="form-group">
+          <label>Nazwa użytkownika</label>
+          <%= f.text_field(:customer_nick, class: "form-control") %>
+        </div>
+        <div class="form-group">
+          <label>Nr telefonu</label>
+          <%= f.text_field(:phone_no, class: "form-control") %>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <%= f.email_field(:email, class: "form-control") %>
+        </div>
+        <div class="form-group">
+          <label>Hasło</label>
+          <label style="font-size: 14px;"><em>(Minimalna ilość znaków: <%= @minimum_password_length %>)</em></label>
+          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label>Powtórz hasło</label>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+        </div>
+        <div class="text-center">
+          <%= link_to("Wróć", {:action => "index"}, :class => "btn btn-primary") %>
+          <%= f.submit("Dodaj klienta", :class => "btn btn-success") %>
+        </div>
+      </form>
     </div>
   <%end%>
-</div>
-</div>
