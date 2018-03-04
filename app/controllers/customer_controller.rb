@@ -9,13 +9,13 @@ class CustomerController < ApplicationController
   end
 
   def new
-    @customer_new = Customer.new
+    @customer_user = Customer.new
   end
 
   def create
-    @customer_new = Customer.new(customer_user_params)
-    if @customer_new.save
-      flash[:notice] = "Klient: #{@customer_new.customer_nick} pomyślnie dodany"
+    @customer_user = Customer.new(customer_user_params)
+    if @customer_user.save
+      flash[:notice] = "Klient: #{@customer_user.customer_nick} pomyślnie dodany"
       redirect_to(:action => "index")
     else
       render("new")
@@ -69,6 +69,5 @@ class CustomerController < ApplicationController
     def password_update_params
       params.require(:customer_pwd).permit(:password, :password_confirmation)
     end
-
 
 end

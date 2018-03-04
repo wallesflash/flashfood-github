@@ -1,5 +1,5 @@
 class ClientPanelController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_customer!, except: [:create_pdf]
   layout "client_panel"
 
 
@@ -41,6 +41,34 @@ class ClientPanelController < ApplicationController
     @bookings = Booking.where(:customer_id => current_customer.id)
     @lp = 0
     @client_info = Customer.find(current_customer.id)
+  end
+
+  def create_pdf
+      @bookings = Booking.find(params[:id])
+      @table = Table.find_by_id(@bookings.table_id)
+      @book_pdf = Booking.find(params[:id])
+      respond_to do |format|
+        format.html
+        format.pdf do
+          pdf = Prawn::Document.new
+          pdf.text "Restauracja", aligh: :left, size: 12, style: :bold
+          pdf.text "FlashFood", aligh: :left, size: 16, style: :bold
+          pdf.move_down 60
+          pdf.text "Potwierdzenie rezerwacji nr #{@book_pdf.id}", size: 20, style: :bold, align: :center
+
+          pdf.draw_text "Data rezewacji: #{@book_pdf.booking_data} ", :at => [50, 570]
+          pdf.draw_text "Imie i nazwisko: #{@book_pdf.customer_name + " " + @book_pdf.customer_surename} ", :at => [50, 540]
+          pdf.draw_text "Rezerwacja w godzinach: #{@book_pdf.booking_hour_start.to_s(:only_hour) + " do " + @book_pdf.booking_hour_end.to_s(:only_hour)} ", :at => [50, 510]
+          pdf.draw_text "Zarezerwowano #{@table.table_type} ", :at => [50, 480]
+          pdf.move_down 150
+          pdf.text "DZIEKUJEMY ZA WYBOR NASZEJ RESTAURACJI", align: :right
+
+          send_data pdf.render, filename: "potwiedzenie rezerwacji nr #{@book_pdf.id}.pdf",
+                                type: "application/pdf",
+                                disposition: "inline"
+        
+      end
+    end
   end
 
   def new

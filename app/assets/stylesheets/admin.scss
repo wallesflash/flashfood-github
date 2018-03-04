@@ -6,22 +6,71 @@
 body,
 html {
   font-family: "open sans", "Halvetica Neue", Halvetica, Arial, sans-serif;
-  background: image-url("scuffedstatic_blue.jpg");
+  background: image-url("sa_sweetdeal-wallpaper.jpg");
   background-size: cover;
-  color: #2f2f2f;
+  color: #d7d7d7;
   font-size: 16px;
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
+
+
 .right-pan-style {
-  background-color: rgba(249, 88, 88, 0.6);
+  background-color: rgba(91, 11, 11, 0.9);
   width: 100%;
   margin: 0;
 }
 
 .right-pan-title {
-  margin-top: 35px;
-  color: #dd9200;
+  margin-top: 15px;
+  color: #cfcfcf;
+}
+.right-pan-title h1{
+  font-size: 16;
+}
+.right-pan-view > span > a{
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+}
+.right-pan-view > span{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.nav-menu {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #e6e6e6;
+}
+
+.nav{
+  width: 70%;
+  margin-left: 15%;
+  text-align: center;
+  margin-top: 20%;
+}
+
+.nav > li > a{
+  color: rgb(170, 170, 170);
+
+}
+.nav > li > a:hover{
+  color: rgb(255, 85, 85);
+  background-color: rgba(77, 75, 75, 0.6);
+  border-radius: 10px;
+  width: 80%;
+  margin-left: 10%;
+
+}
+
+.panel-body{
+  color: rgb(228, 228, 228);
+  font-weight: bold;
+  font-size: 18px;
+  background-color: rgb(8, 8, 8)
+}
+
+.admin-logout:hover{
+  color: rgb(255, 255, 255);
 }

@@ -18,17 +18,17 @@ class Customer < ApplicationRecord
 
   validates :customer_nick, :format => {:with => NICK_REGEX, :multiline => true, :message => "Wystąpiły niedozwolone znaki w nazwie użytkownika"}
 
-  validates_uniqueness_of :email, :message => "Podany adres email jest już wykorzystany"
+  validates_uniqueness_of :email, :message => "Podany adres email jest używany"
 
   validates_numericality_of :phone_no, :message => "Proszę użyć tylko cyfr"
 
-  validates :password,
-            :length => {:minimum => 6, :maximum => 128, :message => "Proszę wpisać minimum 6 znaków"}, on: :new
-
-  validates :password, :confirmation => {:message => "Wpisane hasła NIE są identyczne"}, on: :new
-            # :if => lambda{ |customer| customer.password_confirmation.present? }
-
   devise :validatable
+  #
+  # validates :password,
+  #           :length => {:in => 6..128, :message => "Proszę wpisać minimum 6 znaków"}, on: :new
+  #
+  validates :password, :confirmation => {:message => "Wpisane hasła NIE są identyczne"}, on: :new
+
 
 
 end

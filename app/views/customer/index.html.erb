@@ -1,6 +1,6 @@
-    <h1 class="text-center right-pan-title">Lista użytkowników</h1>
+    <h1 class="text-center right-pan-title">Lista klientów</h1>
     <div class="pull-right counter">
-      Ilość użytkowników:
+      Ilość klientów:
       <%= @customer_user.size %>
     </div>
     <%= link_to("Nowy klient", {:action => "new"}, :class => "btn btn-mini btn-success")%>
@@ -25,7 +25,7 @@
           <td>
             <%= link_to("Edycja", {:action => "edit", :id => cu.id}, :class => "btn btn-xs btn-primary") %>
             <%= link_to("Usuń", {:action => "delete", :id => cu.id}, :class => "btn btn-xs btn-danger") %>
-            <%= link_to("Rezerwuj", {:action => "", :id => cu.id}, :class => "btn btn-xs btn-warning") %>
+            <%= link_to("Rezerwuj", {:controller => "booking", :action => "new_exist_customer", :id => cu.id}, :class => "btn btn-xs btn-warning") %>
           </td>
         </tr>
       <% end %>

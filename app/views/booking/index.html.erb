@@ -20,7 +20,11 @@
           <td><%= @lp += 1 %></td>
           <td><%= b.id %></td>
           <td><%= b.customer_name + " " + b.customer_surename %></td>
-          <td><%= b.customer_id %></td>
+          <% if b.customer_id == 1 %>
+            <td>Bez konta</td>
+          <% else %>
+            <td><%= b.customer_id %></td>
+          <% end %>
           <td><%= b.booking_data %></td>
           <td colspan="2"><%= b.booking_hour_start.to_s(:only_hour) + " - " + b.booking_hour_end.to_s(:only_hour) %></td>
           <td>

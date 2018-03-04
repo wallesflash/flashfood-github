@@ -1,5 +1,5 @@
 class BookingController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, except: [:new, :create, :show]
   layout "admin"
   # before_action :check_login
 
@@ -14,14 +14,22 @@ class BookingController < ApplicationController
   end
 
   def new
-    @reserv_new = Booking.new
+    @reservation = Booking.new
+  end
+
+  def new_exist_customer
+    @customer_exist = Customer.find(params[:id])
   end
 
   def create
-    @reserv_new = Booking.new(booking_params)
-    if @reserv_new.save
-      flash[:notice] = "Rezerwacja nr: #{@reserv_new.id} została zapisana"
-      redirect_to(:action => "index")
+    @reservation = Booking.new(booking_params)
+    if @reservation.save
+      flash[:notice] = "Rezerwacja nr: #{@reservation.id} została zapisana"
+      if admin_signed_in? || customer_signed_in?
+        redirect_to(:action => "index")
+      else
+        render("show")
+      end
     else
       render("new")
     end

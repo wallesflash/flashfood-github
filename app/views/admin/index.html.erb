@@ -1,17 +1,15 @@
     <h1 class="text-center right-pan-title">Lista administratorów</h1>
-    <div class="pull-right counter">
-      Nb. of users:
-      <%= @admin_user.size %>
-    </div>
-    <%= link_to("Nowy administrator", {:action => "new"}, :class => "btn btn-mini btn-success")%>
+    <% if current_admin.id == 1 %>
+      <%= link_to("Nowy administrator", {:action => "new"}, :class => "btn btn-mini btn-success bottom-space")%>
+    <% end %>
     <table class="table border-dark admin-table-style">
       <tr>
         <th class="text-center">Imię</th>
         <th class="text-center">Nazwisko</th>
         <th class="text-center">Nick</th>
         <th class="text-center">Email</th>
-        <% if current_admin.id == 6 %>
-        <th class="text-center">Opcje</th>
+        <% if current_admin.id == 1 %>
+          <th class="text-center">Opcje</th>
         <% end %>
       </tr>
       <% @admin_user.each do |au| %>
@@ -20,7 +18,7 @@
           <td><%= au.surename %></td>
           <td><%= au.admin_nick %></td>
           <td><%= au.email %></td>
-          <% if current_admin.id == 6 %>
+          <% if current_admin.id == 1 %>
           <td>
             <%= link_to("Edycja", {:action => "edit", :id => au.id}, :class => "btn btn-xs btn-primary") %>
             <%= link_to("Usuń", {:action => "delete", :id => au.id}, :class => "btn btn-xs btn-danger") %>

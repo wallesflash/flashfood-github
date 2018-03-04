@@ -10,9 +10,15 @@ pl:
             current_password:
               invalid: Podane hasło jest niepoprawne
             password:
+              too_short: Proszę wpisać minimum 6 znaków
+        admin:
+          attributes:
+            password_confirmation:
+              confirmation: Wpisane hasła NIE są identyczne
+            current_password:
+              invalid: Podane hasło jest niepoprawne
+            password:
               too_short: Wpisane hasło jest za krótkie (minimum 6 znaków)
-            email:
-              invalid:   
     attributes:
       user:
         confirmation_sent_at:

@@ -10,7 +10,7 @@
     <th colspan="2" class="text-center">Godziny</th>
     <th class="text-center">Nr stolika</th>
     <th class="text-center">Utworzono</th>
-    <% if current_customer.id == 14 %>
+    <% if current_customer.id == 1 %>
       <th class="text-center">Imię i nazwisko</th>
     <% end %>
     <th class="text-center">Opcje</th>
@@ -23,13 +23,13 @@
       <td colspan="2"><%= b.booking_hour_start.to_s(:only_hour) + " - " + b.booking_hour_end.to_s(:only_hour) %></td>
       <td><%= b.table_id %></td>
       <td><%= b.updated_at.to_s(:date_and_time) %></td>
-      <% if current_customer.id == 14 %>
+      <% if current_customer.id == 1 %>
         <td><%= b.customer_name + " " + b.customer_surename %></td>
       <% end %>
       <td>
         <%= link_to("Edycja", {:action => "edit", :id => b.id}, :class => "btn btn-xs btn-primary") %>
         <%= link_to("Usuń", {:action => "delete", :id => b.id}, :class => "btn btn-xs btn-danger") %>
-        <%= link_to("PDF", {:action => "delete", :id => b.id}, :class => "btn btn-xs btn-default") %>
+        <%= link_to("PDF", {:action => "create_pdf", :id => b.id, :format => "pdf"} , :class => "btn btn-xs btn-default") %>
       </td>
     </tr>
   <% end %>

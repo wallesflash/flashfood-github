@@ -6,9 +6,9 @@
     <%= stylesheet_link_tag 'application', 'client_panel', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'jquery', 'admin', 'data-turbolinks-track': 'reload' %>
 
-  </head>i
+  </head>
 
-  <body id="admin_body">
+  <body>
     <div class="container-fluid table-display h100">
       <div class="row table-row">
         <div class="col-sm-3 table-cell h100 nav-menu">
@@ -16,52 +16,42 @@
             <h4>Restauracja</h4>
             <h1>FlashFood</h1>
           </div>
-          <div class="wrapper">
-              <ul class="nav-list">
-                <% if customer_signed_in? %>
-                  <li role="presentation" class="active"><%= link_to("Moje konto".upcase, {:action => "account_edit", :controller => "client_panel"}, class: "link-decor-off") %></li>
-                  <li role="presentation"><%= link_to("Moje rezerwacje".upcase, {:action => "my_booking", :controller => "client_panel"}, class: "link-decor-off") %></li>
-                <% end %>
-              </ul>
-          </div>
+            <ul class="nav nav-stacked">
+              <% if !customer_signed_in? %>
+              <li role="presentation" class="active"><%= link_to("Zarezerwuj stolik".upcase, {:controller => "booking", :action => "new" }, class: "link-decor-off") %></li>
+              <li role="presentation" class="active"><%= link_to("Logowanie / rejestracja".upcase, new_customer_session_path, class: "link-decor-off") %></li>
+              <% end %>
+              <% if customer_signed_in? %>
+                <li role="presentation" class="active"><%= link_to("Moje konto".upcase, {:action => "account_edit", :controller => "client_panel"}, class: "link-decor-off") %></li>
+                <li role="presentation"><%= link_to("Moje rezerwacje".upcase, {:action => "my_booking", :controller => "client_panel"}, class: "link-decor-off") %></li>
+              <% end %>
+            </ul>
         </div>
+        <div class="col-sm-9 table-cell valign-top h100">
           <% if flash[:notice] || flash[:error] %>
             <div class="alert alert-success notice">
               <%= flash[:notice] %>
               <%= flash[:error] %>
             </div>
+          <% end %>
+          <% if flash[:alert] %>
+            <div class="alert alert-danger notice">
+              <%= flash[:alert] %>
+            </div>
           <%end%>
-        </div>
-      </div>
           <div class="right-pan-style h100">
             <div class="container right-pan-view">
-              <header>
-                <div class="row">
-                  <div class="col-md-5">
-                    <p><%= "Panel użytkownika".upcase %></p>
-                  </div>
-                  <div class="col-md-7">
-                    <ul class="pull-right list-inline">
-                      <li>
-                        <a href="#" class="link-decor-off">
-                          <span>
-                            <% if customer_signed_in? %>
-                              <p>Hello,
-                                <%= current_customer.name %> <br>
-                                <%= link_to("Wyloguj", destroy_customer_session_path, :method => "delete", :class => "link-decor-off") %><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                              </p>
-                              <br>
-                            <%end%>
-                          </span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </header>
+              <p><%= "Panel klienta".upcase %></p>
+              <% if customer_signed_in? %>
+                <span class="pull-right">Witaj,
+                  <%= current_customer.name %></span><br><br>
+                <span><%= link_to("Wyloguj", destroy_customer_session_path, :method => "delete", :class => "btn btn-danger customer-logout link-decor-off pull-right") %></span><br>
+              <% end %>
               <%= yield %>
             </div>
           </div>
         </div>
-      </body>
-    </html>
+      </div>
+    </div>
+  </body>
+</html>

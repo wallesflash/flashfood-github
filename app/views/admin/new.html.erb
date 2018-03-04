@@ -1,7 +1,7 @@
 
 
   <h1 class="text-center right-pan-title">Nowy administrator</h1>
-  <%= form_for(:admin_user, :url => {:action => "create"}) do |f| %>
+  <%= form_for(@admin_user, :url => {:action => "create"}, :validate => true) do |f| %>
 
   <div class="container table bg-dark" style="width: 40%; border-radius: 5px; padding: 20px;">
     <form>

@@ -1,22 +1,21 @@
 
-    <h1 class="text-center right-pan-title">Szczegóły rezerwacji nr
-      <%= @reservation.id %></h1>
+    <h1 class="text-center right-pan-title">Szczegóły twojej rezewacji</h1>
 <div class="container table bg-dark" style="width: 50%; border-radius: 5px; padding: 20px;">
     <table class="table admin-table-style">
+      <tr>
+        <th class="col-sm-5">Nr rezerwacji</th>
+        <td class="col-sm-7"><%= @reservation.id %></td>
+      </tr>
       <tr>
         <th class="col-sm-5">Imię i nazwisko</th>
         <td class="col-sm-7"><%= @reservation.customer_name + " " + @reservation.customer_surename %></td>
       </tr>
       <tr>
-        <th>Nr klienta</th>
-        <td><%= @reservation.customer_id %></td>
-      </tr>
-      <tr>
         <th>Nr telefonu</th>
-        <% if @reservation.customer_id != 14 %>
+        <% if @reservation.customer_id != 1 %>
           <td><%= Customer.find(@reservation.customer_id).phone_no %></td>
         <% end %>
-        <% if @reservation.customer_id == 14 %>
+        <% if @reservation.customer_id == 1 %>
           <td><%= @reservation.phone_no %></td>
         <% end %>
       </tr>
@@ -38,7 +37,12 @@
       </tr>
     </table>
     <div style="text-align: center;">
-      <%= link_to("Wróć", {:action => "index"}, :class => "btn btn-primary") %>
-      <%= link_to("Edytuj", {:action => "edit", :id => @reservation.id}, :class => "btn btn-warning") %>
+      <% if admin_signed_in? %>
+        <%= link_to("Wróć", {:action => "index"}, :class => "btn btn-primary") %>
+      <% end %>
+      <% if !admin_signed_in? %>
+        <%= link_to("Wróć", new_customer_session_path, :class => "btn btn-primary") %>
+      <% end %>
+      <%= link_to("Utwórz potwierdzenie PDF", {:controller => "client_panel", :action => "create_pdf", :id => @reservation.id, :format => "pdf"} , :class => "btn btn-default", target: :_blank) %>
     </div>
 </div>

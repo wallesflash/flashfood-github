@@ -5,9 +5,9 @@
 body,
 html {
   font-family: "open sans", "Halvetica Neue", Halvetica, Arial, sans-serif;
-  background: image-url("scuffedstatic_blue.jpg");
+  background: image-url("sa_sweetdeal-wallpaper.jpg");
   background-size: cover;
-  color: #e6e6e6;
+  color: #141414;
   font-size: 16px;
   height: 100%;
   margin: 0;
@@ -15,12 +15,63 @@ html {
 }
 
 .right-pan-style {
-  background-color: rgba(249, 88, 88, 0.6);
+  background-color: rgba(251, 218, 118, 0.90);
   width: 100%;
   margin: 0;
 }
 
 .right-pan-title {
   margin-top: 35px;
-  color: #dd9200;
+  color: #d61d1d;
+}
+
+.nav-menu {
+  background-color: rgba(158, 210, 159, 0.90);
+  color: #0b0b0b;
+
+}
+
+.client-title{
+  color: #141414;
+}
+
+form label{
+  color: rgb(207, 207, 207);
+}
+
+.wrapper ul{
+  margin-top: 20%;
+
+}
+.wrapper ul > li > a{
+
+  color: rgb(207, 0, 0);
+}
+
+.customer-logout{
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+}
+.customer-logout:hover{
+  color: rgb(0, 0, 0);
+}
+
+.nav{
+  width: 70%;
+  margin-left: 15%;
+  text-align: center;
+  margin-top: 20%;
+}
+
+.nav > li > a{
+ color: rgb(209, 42, 42);
+
+}
+
+.nav > li > a:hover{
+ color: rgb(0, 0, 0);
+ background-color: rgba(255, 184, 47, 0.6);
+ border-radius: 10px;
+ width: 80%;
+ margin-left: 10%;
 }

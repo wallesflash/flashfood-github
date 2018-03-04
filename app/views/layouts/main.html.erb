@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'jquery', 'admin', 'data-turbolinks-track': 'reload' %>
- 
+
   </head>
 
   <body>
@@ -25,7 +25,6 @@
               <% end %>
             </ul>
           </div>
-
         </div>
         <div class="col-sm-9 table-cell valign-top h100">
           <% if flash[:notice] || flash[:error] %>
@@ -64,5 +63,7 @@
             </div>
           </div>
         </div>
-      </body>
-    </html>
+      </div>
+    </div>  
+  </body>
+</html>

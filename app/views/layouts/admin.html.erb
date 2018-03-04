@@ -7,10 +7,9 @@
     <%= stylesheet_link_tag 'application', 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'jquery', 'admin', 'data-turbolinks-track': 'reload' %>
 
-
   </head>
 
-  <body id="admin_body">
+  <body>
     <div class="container-fluid table-display h100">
       <div class="row table-row">
         <div class="col-sm-3 table-cell h100 nav-menu">
@@ -18,16 +17,13 @@
             <h4>Restauracja</h4>
             <h1>FlashFood</h1>
           </div>
-          <div class="wrapper">
-            <ul class="nav-list">
-              <% if admin_signed_in? %>
-                <li><%= link_to("Administratorzy".upcase, {:action => "index", :controller => "admin"}, class: "link-decor-off") %></li>
-                <li><%= link_to("Klienci".upcase, {:action => "index", :controller => "customer"}, class: "link-decor-off") %></li>
-                <li><%= link_to("Rezerwacje".upcase, {:action => "index", :controller => "booking"}, class: "link-decor-off") %></li>
-              <% end %>
-            </ul>
-          </div>
-
+          <ul class="nav nav-stacked">
+            <% if admin_signed_in? %>
+              <li role="presentation"><%= link_to("Administratorzy".upcase, {:action => "index", :controller => "admin"}, class: "link-decor-off") %></li>
+              <li role="presentation"><%= link_to("Klienci".upcase, {:action => "index", :controller => "customer"}, class: "link-decor-off") %></li>
+              <li role="presentation"><%= link_to("Rezerwacje".upcase, {:action => "index", :controller => "booking"}, class: "link-decor-off") %></li>
+            <% end %>
+          </ul>
         </div>
         <div class="col-sm-9 table-cell valign-top h100">
           <% if flash[:notice] || flash[:error] %>
@@ -35,36 +31,25 @@
               <%= flash[:notice] %>
               <%= flash[:error] %>
             </div>
+          <% end %>
+          <% if flash[:alert] %>
+            <div class="alert alert-danger notice">
+              <%= flash[:alert] %>
+            </div>
           <%end%>
           <div class="right-pan-style h100">
             <div class="container right-pan-view">
-              <header>
-                <div class="row">
-                  <div class="col-md-5">
-                    <p><%= "Panel administratora".upcase %></p>
-                  </div>
-                  <div class="col-md-7">
-                    <ul class="pull-right list-inline">
-                      <li>
-                        <a href="#" class="link-decor-off">
-                          <span>
-                            <% if admin_signed_in? %>
-                              <p>Hello,
-                                <%= current_admin.name %> <br>
-                                <%= link_to("Wyloguj", destroy_admin_session_path, :method => "delete", :class => "link-decor-off") %><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                              </p>
-                              <br>
-                            <%end%>
-                          </span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </header>
+              <p><%= "Panel administratora".upcase %></p>
+              <% if admin_signed_in? %>
+                <span class="pull-right">Witaj,
+                  <%= current_admin.name.upcase %></span><br><br>
+                <span><%= link_to("Wyloguj", destroy_admin_session_path, :method => "delete", :class => "btn btn-warning admin-logout link-decor-off pull-right") %></span><br>
+              <% end %>
               <%= yield %>
             </div>
           </div>
         </div>
-      </body>
-    </html>
+      </div>
+    </div>
+  </body>
+</html>

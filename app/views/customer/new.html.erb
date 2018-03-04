@@ -1,6 +1,6 @@
 
     <h1 class="text-center right-pan-title">Nowy klient</h1>
-    <%= form_for(:customer_user, :url => {:action => "create"}) do |f| %>
+    <%= form_for(@customer_user, as: :customer_user, :url => {:action => "create"}, :validate => true) do |f| %>
 
     <div class="container table bg-dark" style="width: 40%; border-radius: 5px; padding: 20px;">
       <form>
@@ -26,7 +26,6 @@
         </div>
         <div class="form-group">
           <label>Hasło</label>
-          <label style="font-size: 14px;"><em>(Minimalna ilość znaków: <%= @minimum_password_length %>)</em></label>
           <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
         </div>
         <div class="form-group">

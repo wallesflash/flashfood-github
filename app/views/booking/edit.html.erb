@@ -17,10 +17,6 @@
           <%= collection_select(:reservation, :table_id, Table.order("id ASC"), :id, :table_type, {:prompt => 'Wybierz stolik'}, {:class => "form-control"}) %>
         </div>
         <div class="form-group">
-          <label>Ilość osób</label>
-          <%= f.text_field(:guests_quantity, :class => "form-control", placeholder: "Podaj ilość osób") %>
-        </div>
-        <div class="form-group">
           <label>Data rezerwacji</label>
           <%= f.date_field(:booking_data, :class => "form-control", placeholder: "Podaj datę rezerwacji") %>
         </div>
