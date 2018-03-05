@@ -213,9 +213,13 @@ tr, td{
 }
 
 .inline-form-view{
+  float: left;
   display: inline-block;
   width: 40%;
   text-align: left;
+}
+.form-up{
+  padding-top: 0px;
 }
 
 .field_with_errors label{
@@ -229,4 +233,17 @@ tr, td{
 
 .bottom-space{
   margin-bottom: 15px;
+}
+
+.comment{
+  margin-left: 8%;
+  clear: both;
+  width: 84%;
+  text-align: left;
+}
+
+.booking-hour{
+  float: left;
+  width: 47%;
+
 }

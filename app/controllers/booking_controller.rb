@@ -1,7 +1,7 @@
 class BookingController < ApplicationController
   before_action :authenticate_admin!, except: [:new, :create, :show]
+
   layout "admin"
-  # before_action :check_login
 
   def index
     @bookings = Booking.sort_by_date
