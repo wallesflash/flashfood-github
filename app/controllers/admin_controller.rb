@@ -7,13 +7,13 @@ class AdminController < ApplicationController
   end
 
   def new
-    @admin_new = Admin.new
+    @admin_user = Admin.new
   end
 
   def create
-    @admin_new = Admin.new(admin_user_params)
-    if @admin_new.save
-      flash[:notice] = "Administrator #{@admin_new.admin_nick} pomyślnie dodany"
+    @admin_user = Admin.new(admin_user_params)
+    if @admin_user.save
+      flash[:notice] = "Administrator #{@admin_user.admin_nick} pomyślnie dodany"
       redirect_to(:action => "index")
     else
       render("new")
