@@ -39,7 +39,9 @@
           <%end%>
           <div class="right-pan-style h100">
             <div class="container right-pan-view">
-              <p><%= "Panel administratora".upcase %></p>
+              <% if admin_signed_in? %>
+                <p><%= "Panel administratora".upcase %></p>
+              <% end %>  
               <% if admin_signed_in? %>
                 <span class="pull-right">Witaj,
                   <%= current_admin.name.upcase %></span><br><br>
